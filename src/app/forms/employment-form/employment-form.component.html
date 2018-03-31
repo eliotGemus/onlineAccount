@@ -1,0 +1,24 @@
+<div class="container">
+  <h1>Account Subscription</h1>
+    <h2>Employment information :</h2>
+  <form>
+    <div class="form-group">
+      <label for="title">Employer name</label>
+      <input type="text" class="form-control" id="title" required [(ngModel)]="employment.employerName" name="title">
+    </div>
+    <div class="form-group">
+      <label for="author">Employer address</label>
+      <input type="text" class="form-control" id="author" required [(ngModel)]="employment.employerAddress" name="author">
+    </div>
+    <div class="form-group">
+      <label for="url">Work phone</label>
+      <input type="text" class="form-control" id="url" [(ngModel)]="employment.workPhone" name="url">
+    </div>
+    <div class="form-group">
+      <label for="url">Job position</label>
+      <input type="text" class="form-control" id="url" [(ngModel)]="employment.jobPosition" name="url">
+    </div>
+    <button type="submit" (click)="goBack()" class="btn btn-default-nav">Back</button>
+    <button type="submit" (click)="goNextPage()" class="btn btn-default">Next</button>
+   </form>
+ </div>
