@@ -35,6 +35,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                         username: user.username,
                         firstName: user.firstName,
                         lastName: user.lastName,
+                        personalInfo: user.personalInfo,
                         token: 'fake-jwt-token'
                     };
 
@@ -67,6 +68,33 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     let user = matchedUsers.length ? matchedUsers[0] : null;
 
                     return Observable.of(new HttpResponse({ status: 200, body: user }));
+                } else {
+                    // return 401 not authorised if token is null or invalid
+                    return Observable.throw('Unauthorised');
+                }
+            }
+
+            // update user
+            if (request.url.match(/\/api\/users\/\d+$/) && request.method === 'PUT') {
+                // check for fake auth token in header and return user if valid, this security is implemented server side in a real application
+                if (request.headers.get('Authorization') === 'Bearer fake-jwt-token') {
+                    // get new user object from post body
+                    let updatedUser = request.body;
+                    // find user by id in users array
+                    let urlParts = request.url.split('/');
+                    let id = parseInt(urlParts[urlParts.length - 1]);
+              
+                    for (let i = 0; i < users.length; i++) {
+                        let user = users[i];
+                        if (user.id === id) {
+                            // delete user
+                            users[i].personalInfo = updatedUser.personalInfo;
+                            localStorage.setItem('users', JSON.stringify(users));
+                            break;
+                        }
+                    }
+
+                    return Observable.of(new HttpResponse({ status: 200, body: updatedUser }));
                 } else {
                     // return 401 not authorised if token is null or invalid
                     return Observable.throw('Unauthorised');
@@ -120,7 +148,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
 
             // pass through any requests not handled above
             return next.handle(request);
-            
+
         })
 
         // call materialize and dematerialize to ensure delay even if an error is thrown (https://github.com/Reactive-Extensions/RxJS/issues/648)

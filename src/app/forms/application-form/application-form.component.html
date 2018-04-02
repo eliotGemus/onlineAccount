@@ -4,35 +4,35 @@
   <form>
     <div class="form-group">
       <label for="title">Title</label>
-      <input type="text" class="form-control" id="title" required [(ngModel)]="personalInfo.title" name="title">
+      <input type="text" class="form-control" id="title" required [(ngModel)]="currentUser.personalInfo.title" name="title">
     </div>
     <div class="form-group">
       <label for="author">First name</label>
-      <input type="text" class="form-control" id="author" required [(ngModel)]="personalInfo.firstName" name="firstName">
+      <input type="text" class="form-control" id="author" required [(ngModel)]="currentUser.personalInfo.firstName" name="firstName">
     </div>
     <div class="form-group">
       <label for="url">Middle name</label>
-      <input type="text" class="form-control" id="url" [(ngModel)]="personalInfo.middleName" name="middleName">
+      <input type="text" class="form-control" id="url" [(ngModel)]="currentUser.personalInfo.middleName" name="middleName">
     </div>
     <div class="form-group">
       <label for="url">Last name</label>
-      <input type="text" class="form-control" id="url" [(ngModel)]="personalInfo.lastName" name="lastName">
+      <input type="text" class="form-control" id="url" [(ngModel)]="currentUser.personalInfo.lastName" name="lastName">
     </div>
     <div class="form-group">
       <label for="url">Home phone</label>
-      <input type="text" class="form-control" id="url" [(ngModel)]="personalInfo.homePhone" name="homePhone">
+      <input type="text" class="form-control" id="url" [(ngModel)]="currentUser.personalInfo.homePhone" name="homePhone">
     </div>
     <div class="form-group">
       <label for="url">Mobile phone</label>
-      <input type="text" class="form-control" id="url" [(ngModel)]="personalInfo.mobilePhone" name="mobilePhone">
+      <input type="text" class="form-control" id="url" [(ngModel)]="currentUser.personalInfo.mobilePhone" name="mobilePhone">
     </div>
     <div class="form-group">
       <label for="url">Email</label>
-      <input type="text" class="form-control" id="url" [(ngModel)]="personalInfo.email" name="email">
+      <input type="text" class="form-control" id="url" [(ngModel)]="currentUser.personalInfo.email" name="email">
     </div>
     <div class="form-group">
       <label for="url">Social Security Number</label>
-      <input type="text" class="form-control" id="url" [(ngModel)]="personalInfo.socialSecurityNum" name="socialSecurityNum">
+      <input type="text" class="form-control" id="url" [(ngModel)]="currentUser.personalInfo.socialSecurityNum" name="socialSecurityNum">
     </div>
     <button type="submit" (click)="goBack()" class="btn btn-default-nav">Back</button>
     <button type="submit" (click)="goNext()" class="btn btn-default">Next</button>
