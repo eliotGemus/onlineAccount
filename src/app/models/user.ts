@@ -1,4 +1,4 @@
-import { PersonalInfo } from './personalInfo.model';
+import { PersonalInfo, EmploymentInfo, AccountInfo } from './index';
 export class User {
     id: number;
     username: string;
@@ -6,4 +6,6 @@ export class User {
     firstName: string;
     lastName: string;
     personalInfo: PersonalInfo;
+    employmentInfo: EmploymentInfo;
+    accountInfo: AccountInfo;
 }

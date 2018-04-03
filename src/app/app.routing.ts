@@ -1,6 +1,5 @@
 import { Routes, RouterModule } from '@angular/router';
-import { ApplicationFormComponent } from './forms/application-form/application-form.component';
-import { EmploymentFormComponent } from './forms/employment-form/employment-form.component';
+import { DocumentationFormComponent, AccountInformationFormComponent, EmploymentFormComponent, ApplicationFormComponent } from './forms/index';
 import { AuthGuard } from './authentificator/index';
 import { LoginComponent } from './login/index';
 import { HomeComponent } from './home/index';
@@ -12,6 +11,8 @@ const appRoutes: Routes = [
     { path: 'register', component: RegisterComponent },
     { path: 'applicationForm', component: ApplicationFormComponent },
     { path: 'employmentForm', component: EmploymentFormComponent },
+    { path: 'accountInformationForm', component: AccountInformationFormComponent  },
+    { path: 'DocumentationForm', component: DocumentationFormComponent  },
     // otherwise redirect to home
     { path: '**', redirectTo: '' }
 ];

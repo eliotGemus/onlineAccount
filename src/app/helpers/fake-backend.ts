@@ -36,6 +36,8 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                         firstName: user.firstName,
                         lastName: user.lastName,
                         personalInfo: user.personalInfo,
+                        employmentInfo: user.employmentInfo,
+                        accountInfo: user.accountInfo,
                         token: 'fake-jwt-token'
                     };
 
@@ -83,14 +85,15 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     // find user by id in users array
                     let urlParts = request.url.split('/');
                     let id = parseInt(urlParts[urlParts.length - 1]);
-              
+
                     for (let i = 0; i < users.length; i++) {
                         let user = users[i];
                         if (user.id === id) {
-                            // delete user
-                            users[i].personalInfo = updatedUser.personalInfo;
-                            localStorage.setItem('users', JSON.stringify(users));
-                            break;
+                          users[i].personalInfo = updatedUser.personalInfo;
+                          users[i].employmentInfo = updatedUser.employmentInfo;
+                          users[i].accountInfo = updatedUser.accountInfo;
+                          localStorage.setItem('users', JSON.stringify(users));
+                          break;
                         }
                     }
 

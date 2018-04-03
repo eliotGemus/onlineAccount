@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { User } from '../../models/index';
-import { PersonalInfo } from '../../models/index';
+import { PersonalInfo, User } from '../../models/index';
 import { UserService} from '../../services/index';
 
 @Component({
@@ -12,6 +11,7 @@ import { UserService} from '../../services/index';
 export class ApplicationFormComponent implements OnInit {
 
   currentUser: User;
+  loading = false;
 
   constructor(private router: Router,  private userService: UserService) { }
 
@@ -23,24 +23,23 @@ export class ApplicationFormComponent implements OnInit {
   }
 
   goNext() {
-      this.savePersonalInfo();
-      this.router.navigate(['employmentForm']);
-  }
-
-  goBack() {
-      this.savePersonalInfo();
-      this.router.navigate(['']);
-  }
-
-  savePersonalInfo() {
+    this.loading = true;
     this.userService.update(this.currentUser)
         .subscribe(
             data => {
                 localStorage.setItem('currentUser', JSON.stringify(data));
+                this.router.navigate(['employmentForm']);
+                this.loading = false;
             },
             error => {
               //Handle error
             });
+
   }
+
+  goBack() {
+            this.router.navigate(['']);
+  }
+
 
 }
