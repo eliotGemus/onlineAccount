@@ -4,14 +4,17 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+	"postinstall": "ng build --aot -prod",
+	"start": "node server.js"
   },
   "private": true,
   "dependencies": {
+    "@angular/cli": "~1.7.3",
+    "@angular/compiler-cli": "^5.2.0",
     "@angular/animations": "^5.2.0",
     "@angular/common": "^5.2.0",
     "@angular/compiler": "^5.2.0",
@@ -47,5 +50,7 @@
     "tslint": "~5.9.1",
 	"rxjs": "^5.2.0",
     "typescript": "~2.5.3"
+  },"engines":{
+  "node":"6.11.2"
   }
 }
