@@ -1,0 +1,29 @@
+#imageWrapper {
+    background: #664c8f;
+    height: auto;
+    padding: 200px 200px;
+    background: url('../images/pic02.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+h2 { color: #ffffff; font-family: 'Raleway',sans-serif; font-size: 30px; font-weight: 800; line-height: 36px; margin: 0 0 24px; text-align: center; }
+
+a { color: #c8c8c8; text-decoration: underline; }
+
+a#logout {
+    display: block;
+    text-align: center;
+    width: 150px;
+    margin: 0px auto;
+    padding: 20px;
+    color: white;
+    text-transform: uppercase;
+    font-family: Arial;
+    border: 1px solid #fff;
+    text-decoration: none;
+    border-radius: 10px;
+
+}

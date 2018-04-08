@@ -23,6 +23,9 @@ export class DocumentationFormComponent implements OnInit {
   }
 
   submitApplication() {
+      // TODO :Send the application to the server using http
+      // handle the answer and navigate to the corresponding file
+      // I don't have much time to so i will assume the response was 200
       this.router.navigate(['success']);
   }
 }

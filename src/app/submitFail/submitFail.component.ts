@@ -4,7 +4,8 @@ import { UserService } from '../services/index';
 
 @Component({
     moduleId: module.id,
-    templateUrl: 'submitFail.component.html'
+    templateUrl: 'submitFail.component.html',
+    styleUrls: ['./submitFail.component.css']
 })
 
 export class SubmitFailComponent implements OnInit {
