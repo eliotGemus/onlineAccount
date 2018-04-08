@@ -8,6 +8,8 @@ import { AlertComponent } from './directives/index';
 import { HomeComponent } from './home/index';
 import { LoginComponent } from './login/index';
 import { RegisterComponent } from './register/index';
+import { SuccessComponent } from './success/index';
+import { SubmitFailComponent } from './submitFail/index';
 import { AlertService, AuthenticationService, UserService } from './services/index';
 import { AuthGuard } from './authentificator/index';
 import { fakeBackendProvider, JwtInterceptor } from './helpers/index';
@@ -24,7 +26,9 @@ import { DocumentationFormComponent, AccountInformationFormComponent, Employment
     LoginComponent,
     RegisterComponent,
     DocumentationFormComponent,
-    AccountInformationFormComponent
+    AccountInformationFormComponent,
+    SuccessComponent,
+    SubmitFailComponent
   ],
   imports: [
     BrowserModule,

@@ -3,6 +3,8 @@ import { DocumentationFormComponent, AccountInformationFormComponent, Employment
 import { AuthGuard } from './authentificator/index';
 import { LoginComponent } from './login/index';
 import { HomeComponent } from './home/index';
+import { SuccessComponent } from './success/index';
+import { SubmitFailComponent } from './submitFail/index';
 import { RegisterComponent } from './register/index';
 
 const appRoutes: Routes = [
@@ -12,7 +14,9 @@ const appRoutes: Routes = [
     { path: 'applicationForm', component: ApplicationFormComponent },
     { path: 'employmentForm', component: EmploymentFormComponent },
     { path: 'accountInformationForm', component: AccountInformationFormComponent  },
-    { path: 'DocumentationForm', component: DocumentationFormComponent  },
+    { path: 'documentationForm', component: DocumentationFormComponent  },
+    { path: 'success', component: SuccessComponent  },
+    { path: 'submitFail', component: SubmitFailComponent  },
     // otherwise redirect to home
     { path: '**', redirectTo: '' }
 ];

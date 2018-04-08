@@ -32,6 +32,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     let user = filteredUsers[0];
                     let body = {
                         id: user.id,
+                        accountNumber: user.accountNumber,
                         username: user.username,
                         firstName: user.firstName,
                         lastName: user.lastName,
@@ -89,6 +90,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     for (let i = 0; i < users.length; i++) {
                         let user = users[i];
                         if (user.id === id) {
+                          users[i].accountNumber = updatedUser.accountNumber;
                           users[i].personalInfo = updatedUser.personalInfo;
                           users[i].employmentInfo = updatedUser.employmentInfo;
                           users[i].accountInfo = updatedUser.accountInfo;

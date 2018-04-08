@@ -32,7 +32,7 @@ export class AccountInformationFormComponent implements OnInit {
             data => {
                 localStorage.setItem('currentUser', JSON.stringify(data));
                 this.loading = false;
-                this.router.navigate(['']);
+                this.router.navigate(['documentationForm']);
             },
             error => {
               //Handle error
