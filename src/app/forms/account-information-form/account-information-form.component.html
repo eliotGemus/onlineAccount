@@ -1,25 +1,32 @@
 <div class="container">
-  <h1>Account Subscription</h1>
+    <h1>Account Subscription</h1>
     <h2>Account information :</h2>
-  <form>
-    <div class="form-group">
-      <label for="title">Account type</label>
-      <input type="text" class="form-control" id="title" required [(ngModel)]="currentUser.accountInfo.accountType" name="accountType">
-    </div>
-    <div class="form-group">
-      <label for="author">Purpose of bank account</label>
-      <input type="text" class="form-control" id="author" required [(ngModel)]="currentUser.accountInfo.purpose" name="purpose">
-    </div>
-    <div class="form-group">
-      <label for="url">Where will the money come from</label>
-      <input type="text" class="form-control" id="url" [(ngModel)]="currentUser.accountInfo.moneySource" name="moneySource">
-    </div>
-    <div class="form-group">
-      <label for="url">How did you hear about us</label>
-      <input type="text" class="form-control" id="url" [(ngModel)]="currentUser.accountInfo.hearAboutUs" name="hearAboutUs">
-    </div>
-    <button type="submit" (click)="goBack()" class="btn btn-default-nav">Back</button>
-    <button type="submit" (click)="goNext()" class="btn btn-default">Next</button>
-    <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
-   </form>
- </div>
+    <form name="form" (ngSubmit)="f.form.valid && goNext()" #f="ngForm" novalidate>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !accountType.valid  }">
+            <label for="title">Account type</label>
+            <select class="form-control" [(ngModel)]="currentUser.accountInfo.accountType" #accountType="ngModel" name="accountType" required>
+                <option *ngFor="let accountType of accountTypes" [value]="accountType">{{accountType}}</option>
+            </select>
+            <div *ngIf="f.submitted && !accountType.valid" class="help-block">Account type is required</div>
+        </div>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !purpose.valid  }">
+            <label for="author">Purpose of bank account</label>
+            <input type="text" class="form-control" [(ngModel)]="currentUser.accountInfo.purpose" #purpose="ngModel" name="purpose" required>
+            <div *ngIf="f.submitted && !purpose.valid" class="help-block">Purpose is required</div>
+        </div>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !moneySource.valid }">
+            <label for="url">Where will the money come from</label>
+            <input type="text" class="form-control" [(ngModel)]="currentUser.accountInfo.moneySource" #moneySource="ngModel" name="moneySource" required>
+            <div *ngIf="f.submitted && !moneySource.valid" class="help-block">Money source is required</div>
+        </div>
+        <div class="form-group">
+            <label for="url">How did you hear about us</label>
+            <select class="form-control" [(ngModel)]="currentUser.accountInfo.hearAboutUs" #hearAboutUs="ngModel" name="hearAboutUs">
+                <option *ngFor="let hearAboutUs of hearAboutUsList" [value]="hearAboutUs">{{hearAboutUs}}</option>
+            </select>
+        </div>
+        <button (click)="goBack()" class="btn btn-default-nav">Back</button>
+        <button type="submit" class="btn btn-default">Next</button>
+        <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+    </form>
+</div>

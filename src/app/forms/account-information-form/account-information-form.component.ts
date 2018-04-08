@@ -13,6 +13,8 @@ export class AccountInformationFormComponent implements OnInit {
 
   currentUser: User;
   loading = false;
+  accountTypes = ['Savings', 'Deposit'];
+  hearAboutUsList = ['Facebook', 'From a friend', 'Radio', 'Others'];
 
   constructor(private router: Router,  private userService: UserService) { }
 

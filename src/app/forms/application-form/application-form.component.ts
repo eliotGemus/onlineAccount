@@ -12,6 +12,7 @@ export class ApplicationFormComponent implements OnInit {
 
   currentUser: User;
   loading = false;
+  titles = ['Mr', 'Mrs', 'Miss', 'Ms'];
 
   constructor(private router: Router,  private userService: UserService) { }
 
