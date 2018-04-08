@@ -14,6 +14,8 @@ import { AlertService, AuthenticationService, UserService } from './services/ind
 import { AuthGuard } from './authentificator/index';
 import { fakeBackendProvider, JwtInterceptor } from './helpers/index';
 import { DocumentationFormComponent, AccountInformationFormComponent, EmploymentFormComponent, ApplicationFormComponent } from './forms/index';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
@@ -28,7 +30,9 @@ import { DocumentationFormComponent, AccountInformationFormComponent, Employment
     DocumentationFormComponent,
     AccountInformationFormComponent,
     SuccessComponent,
-    SubmitFailComponent
+    SubmitFailComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

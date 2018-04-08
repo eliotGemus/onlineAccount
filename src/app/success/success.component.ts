@@ -4,23 +4,24 @@ import { UserService } from '../services/index';
 
 @Component({
     moduleId: module.id,
-    templateUrl: 'success.component.html'
+    templateUrl: 'success.component.html',
+    styleUrls: ['./success.component.css']
 })
 
 export class SuccessComponent implements OnInit {
     currentUser: User;
 
-    constructor(private userService: UserService) {
-   		this.currentUser = JSON.parse(localStorage.getItem('currentUser'));    }
+    constructor(private userService: UserService) { }
 
     ngOnInit() {
+      this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
       if(this.currentUser.accountNumber == null) {
         this.updateUser();
       }
     }
 
     updateUser() {
-      
+
       this.currentUser.accountNumber = this.generateAccountNumber();
       this.userService.update(this.currentUser)
           .subscribe(
