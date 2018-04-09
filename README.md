@@ -9,7 +9,7 @@ If you want to run this project
 On your phone
 1. Run `ng serve --host 0.0.0.0`
 2. Find your local ip using this website https://www.whatismyip.com/
-3. Navigate to <local ip adress>:4200 from any device on the same network.
+3. Navigate to local ip adress:4200 from any device on the same network.
 
 ## Running unit tests
 
